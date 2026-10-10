@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 /**
  * Types of the route table and of the runtime modules registered through `PagesPluginApi`.
  *

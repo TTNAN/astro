@@ -6,6 +6,7 @@ import type { InjectedRoute, RouteData, SSRManifestExtensions } from './types.js
 /**
  * Options of `pages()`.
  */
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface PagesPluginOptions {}
 
 /**
