@@ -1,3 +1,4 @@
+import type { ContextProvider } from '@astrojs/vite-plugin-pages';
 import colors from 'piccolore';
 import {
 	collapseDuplicateSlashes,
@@ -86,18 +87,10 @@ export interface FacadeHooks {
 	logRequest?: (payload: RequestLogPayload) => void;
 }
 
-/**
- * Describes a lazily-created value that handlers can contribute to the
- * request context. `create` is called at most once (on first `resolve`);
- * `finalize` runs during `finalizeAll` to clean up / persist.
- *
- * @internal Not for use by 3rd-party code. May change without notice.
- */
-export interface ContextProvider<T> {
-	/** Factory called lazily on the first `resolve(key)`. */
-	create: () => T;
-	/** Optional cleanup / persist callback. Receives the created value. */
-	finalize?: (value: T) => Promise<void> | void;
+declare module '@astrojs/vite-plugin-pages' {
+	interface PagesRuntimeTypes {
+		requestState: FetchState;
+	}
 }
 
 /**

@@ -1,4 +1,6 @@
 import type { AddressInfo } from 'node:net';
+import type { AstroRenderer, ClientDirectiveConfig } from '@astrojs/vite-plugin-astro';
+import type { InjectedRoute } from '@astrojs/vite-plugin-pages';
 import type { ViteDevServer, InlineConfig } from 'vite';
 import type { SerializedSSRManifest } from '../../core/app/types.js';
 import type { AssetsGlobalStaticImagesList, SerializedStaticImage } from '../../assets/types.js';
@@ -9,7 +11,7 @@ import type { getToolbarServerCommunicationHelpers } from '../../integrations/ho
 import type { DeepPartial } from '../../type-utils.js';
 import type { AstroConfig } from './config.js';
 import type { RefreshContentOptions } from './content.js';
-import type { InternalInjectedRoute, RouteData } from './internal.js';
+import type { RouteData } from './internal.js';
 import type { DevToolbarAppEntry } from './toolbar.js';
 
 export interface RouteOptions {
@@ -27,40 +29,12 @@ export interface RouteOptions {
 	prerender?: boolean;
 }
 
-/* Client Directives */
-type DirectiveHydrate = () => Promise<void>;
-type DirectiveLoad = () => Promise<DirectiveHydrate>;
-
-type DirectiveOptions = {
-	/**
-	 * The component displayName
-	 */
-	name: string;
-	/**
-	 * The attribute value provided
-	 */
-	value: string;
-};
-
-export type ClientDirective = (
-	load: DirectiveLoad,
-	options: DirectiveOptions,
-	el: HTMLElement,
-) => void;
-
-export interface ClientDirectiveConfig {
-	name: string;
-	entrypoint: string | URL;
-}
-
-export interface AstroRenderer {
-	/** Name of the renderer. */
-	name: string;
-	/** Import entrypoint for the client/browser renderer. */
-	clientEntrypoint?: string | URL;
-	/** Import entrypoint for the server/build/ssr renderer. */
-	serverEntrypoint: string | URL;
-}
+export type {
+	AstroRenderer,
+	ClientDirective,
+	ClientDirectiveConfig,
+} from '@astrojs/vite-plugin-astro';
+export type { InjectedRoute } from '@astrojs/vite-plugin-pages';
 
 export type AdapterSupportsKind =
 	(typeof AdapterFeatureStability)[keyof typeof AdapterFeatureStability];
@@ -368,8 +342,6 @@ export type AstroAdapterFeatureMap = {
  * - "page-ssr": Injected into the frontmatter of every Astro page. Processed & resolved by Vite.
  */
 export type InjectedScriptStage = 'before-hydration' | 'head-inline' | 'page' | 'page-ssr';
-
-export type InjectedRoute = Omit<InternalInjectedRoute, 'origin'>;
 
 export interface InjectedType {
 	filename: string;

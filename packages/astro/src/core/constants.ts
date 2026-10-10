@@ -1,3 +1,5 @@
+import type { ValidRedirectStatus } from '@astrojs/vite-plugin-pages';
+
 // process.env.PACKAGE_VERSION is injected when we build and publish the astro package.
 export const ASTRO_VERSION = process.env.PACKAGE_VERSION ?? 'development';
 
@@ -17,7 +19,9 @@ export const DEFAULT_404_COMPONENT = 'astro-default-404.astro';
 /**
  * A response with one of these status codes will create a redirect response.
  */
-export const REDIRECT_STATUS_CODES = [301, 302, 303, 307, 308, 300, 304] as const;
+export const REDIRECT_STATUS_CODES = [
+	301, 302, 303, 307, 308, 300, 304,
+] as const satisfies readonly ValidRedirectStatus[];
 
 /**
  * A response with one of these status codes will be rewritten

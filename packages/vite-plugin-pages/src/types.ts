@@ -131,8 +131,6 @@ export interface InjectedRoute {
  * Describes a lazily-created value that handlers can contribute to the
  * request context. `create` is called at most once (on first `resolve`);
  * `finalize` runs during `finalizeAll` to clean up / persist.
- *
- * @internal Not for use by 3rd-party code. May change without notice.
  */
 export interface ContextProvider<T> {
 	/** Factory called lazily on the first `resolve(key)`. */

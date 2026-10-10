@@ -128,6 +128,8 @@
     "@astrojs/internal-helpers": "workspace:*",
     "@astrojs/markdown-satteri": "workspace:*",
     "@astrojs/telemetry": "workspace:*",
+    "@astrojs/vite-plugin-astro": "workspace:*",
+    "@astrojs/vite-plugin-pages": "workspace:*",
     "@capsizecss/unpack": "^4.0.1",
     "@clack/prompts": "^1.8.1",
     "@oslojs/encoding": "^1.1.0",

@@ -1,4 +1,5 @@
 import type { OutgoingHttpHeaders } from 'node:http';
+import type { RedirectConfig } from '@astrojs/vite-plugin-pages';
 import type { RemotePattern } from '@astrojs/internal-helpers/remote';
 import type {
 	RehypePlugins,
@@ -15,7 +16,6 @@ import type { ImageFit, ImageLayout } from '../../assets/types.js';
 import type { AssetsPrefix } from '../../core/app/types.js';
 import type { CacheProviderConfig, RouteRules } from '../../core/cache/types.js';
 import type { AstroConfigType } from '../../core/config/schemas/index.js';
-import type { REDIRECT_STATUS_CODES } from '../../core/constants.js';
 import type {
 	CspAlgorithm,
 	CspDirective,
@@ -67,14 +67,7 @@ export interface ImageServiceConfig<T extends Record<string, any> = Record<strin
 
 export type RuntimeMode = 'development' | 'production';
 
-export type ValidRedirectStatus = (typeof REDIRECT_STATUS_CODES)[number];
-
-export type RedirectConfig =
-	| string
-	| {
-			status: ValidRedirectStatus;
-			destination: string;
-	  };
+export type { RedirectConfig, ValidRedirectStatus } from '@astrojs/vite-plugin-pages';
 
 export type ServerConfig = {
 	/**
