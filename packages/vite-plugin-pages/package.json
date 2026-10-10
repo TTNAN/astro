@@ -1,0 +1,46 @@
+{
+  "name": "@astrojs/vite-plugin-pages",
+  "description": "Vite plugin for Astro file-based pages, routing, and the server request pipeline.",
+  "version": "0.1.0",
+  "type": "module",
+  "author": "withastro",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/withastro/astro.git",
+    "directory": "packages/vite-plugin-pages"
+  },
+  "bugs": "https://github.com/withastro/astro/issues",
+  "homepage": "https://astro.build",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepublish": "pnpm build",
+    "build": "astro-scripts build \"src/**/*.ts\" && tsc -b",
+    "build:ci": "astro-scripts build \"src/**/*.ts\"",
+    "dev": "astro-scripts dev \"src/**/*.ts\"",
+    "test": "astro-scripts test \"test/**/*.test.ts\""
+  },
+  "dependencies": {
+    "@astrojs/vite-plugin-astro": "workspace:*"
+  },
+  "peerDependencies": {
+    "vite": "^8.3.3"
+  },
+  "devDependencies": {
+    "astro-scripts": "workspace:*",
+    "vite": "^8.3.3"
+  },
+  "keywords": [
+    "astro",
+    "vite",
+    "vite-plugin"
+  ],
+  "publishConfig": {
+    "provenance": true
+  }
+}
