@@ -7,8 +7,11 @@ import colors from 'piccolore';
 import type { Plugin } from 'vite';
 import { ASTRO_VITE_ENVIRONMENT_NAMES } from '../../core/constants.js';
 import { getAlgorithm, shouldTrackCspHashes } from '../../core/csp/common.js';
-import { generateCspDigest } from '../../core/encryption.js';
-import { AstroError, AstroErrorData } from '../../core/errors/index.js';
+import { generateCspDigest } from '@astrojs/vite-plugin-astro/internal/core/encryption.js';
+import {
+	AstroError,
+	AstroErrorData,
+} from '@astrojs/vite-plugin-astro/internal/core/errors/index.js';
 import type { AstroLogger } from '../../core/logger/core.js';
 import { appendForwardSlash, joinPaths, prependForwardSlash } from '../../core/path.js';
 import { getClientOutputDirectory } from '../../prerender/utils.js';

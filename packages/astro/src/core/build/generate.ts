@@ -30,8 +30,11 @@ import type {
 	RouteToHeaders,
 } from '../../types/public/index.js';
 import type { RouteData, RouteType, SSRError } from '../../types/public/internal.js';
-import { hashCryptoKey } from '../encryption.js';
-import { AstroError, AstroErrorData } from '../errors/index.js';
+import { hashCryptoKey } from '@astrojs/vite-plugin-astro/internal/core/encryption.js';
+import {
+	AstroError,
+	AstroErrorData,
+} from '@astrojs/vite-plugin-astro/internal/core/errors/index.js';
 import { getRedirectLocationOrThrow } from '../redirects/index.js';
 import { createRequest } from '../request.js';
 import { redirectTemplate } from '../routing/3xx.js';

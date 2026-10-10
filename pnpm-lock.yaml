@@ -571,9 +571,6 @@ importers:
       ci-info:
         specifier: ^4.4.0
         version: 4.4.0
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
       common-ancestor-path:
         specifier: ^2.0.0
         version: 2.0.0
@@ -7226,6 +7223,24 @@ importers:
 
   packages/vite-plugin-astro:
     dependencies:
+      '@astrojs/compiler-rs':
+        specifier: ^0.5.1
+        version: 0.5.1
+      '@astrojs/internal-helpers':
+        specifier: workspace:*
+        version: link:../internal-helpers
+      '@oslojs/encoding':
+        specifier: ^1.1.0
+        version: 1.1.0
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      rolldown:
+        specifier: ^1.2.11
+        version: 1.2.12
+      smol-toml:
+        specifier: ^1.9.0
+        version: 1.9.0
       zod:
         specifier: ^4.6.5
         version: 4.6.5

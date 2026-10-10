@@ -1,7 +1,8 @@
+import type { SerializedStaticImage } from '../../assets/types.js';
 import type { PrerenderResult } from '../../types/public/integrations.js';
 import type { RouteData } from '../../types/public/internal.js';
 import type { AstroLogger } from '../logger/core.js';
-import { collectPrerenderMetadata } from '../render-scope/collect.js';
+import { collectPrerenderMetadata } from '@astrojs/vite-plugin-astro/internal/core/render-scope/collect.js';
 
 export interface PrerenderableApp {
 	logger: AstroLogger;
@@ -43,7 +44,10 @@ export async function renderForPrerender(
 	if (!options?.collectMetadata) {
 		return { response: await app.render(request, { routeData }) };
 	}
-	const { value: response, metadata } = await collectPrerenderMetadata(async () => {
+	const { value: response, metadata } = await collectPrerenderMetadata<
+		Response,
+		SerializedStaticImage
+	>(async () => {
 		const rendered = await app.render(request, { routeData });
 		const bytes = rendered.body === null ? null : await rendered.arrayBuffer();
 		const nullBody = bytes === null || NULL_BODY_STATUSES.includes(rendered.status);

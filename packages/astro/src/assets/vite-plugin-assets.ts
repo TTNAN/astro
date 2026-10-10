@@ -3,7 +3,10 @@ import { extname } from 'node:path';
 import MagicString from 'magic-string';
 import picomatch from 'picomatch';
 import type * as vite from 'vite';
-import { AstroError, AstroErrorData } from '../core/errors/index.js';
+import {
+	AstroError,
+	AstroErrorData,
+} from '@astrojs/vite-plugin-astro/internal/core/errors/index.js';
 import type { AstroLogger } from '../core/logger/core.js';
 import {
 	appendForwardSlash,
@@ -12,7 +15,10 @@ import {
 	removeBase,
 	removeQueryString,
 } from '../core/path.js';
-import { recordReferencedImage, recordStaticImage } from '../core/render-scope/record.js';
+import {
+	recordReferencedImage,
+	recordStaticImage,
+} from '@astrojs/vite-plugin-astro/internal/core/render-scope/record.js';
 import { normalizePath } from '../core/viteUtils.js';
 import { ASTRO_VITE_ENVIRONMENT_NAMES } from '../core/constants.js';
 import { isAstroServerEnvironment } from '../environments.js';

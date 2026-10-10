@@ -1,6 +1,9 @@
 import { isRemotePath } from '@astrojs/internal-helpers/path';
 import { isRemoteAllowed } from '@astrojs/internal-helpers/remote';
-import { AstroError, AstroErrorData } from '../core/errors/index.js';
+import {
+	AstroError,
+	AstroErrorData,
+} from '@astrojs/vite-plugin-astro/internal/core/errors/index.js';
 import type { AstroConfig } from '../types/public/config.js';
 import type { AstroRuntimeLogger } from '../types/public/context.js';
 import type { AstroAdapterClientConfig } from '../types/public/integrations.js';

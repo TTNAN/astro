@@ -3,7 +3,7 @@ import type { BuildInternals } from './internal.js';
 import type { StaticBuildOptions } from './types.js';
 import type { BuildApp } from './app.js';
 import { renderForPrerender } from '../app/prerender.js';
-import { ensureAsyncRenderScope } from '../render-scope/node-scope.js';
+import { ensureAsyncRenderScope } from '@astrojs/vite-plugin-astro/internal/core/render-scope/node-scope.js';
 import { StaticPaths } from '../../runtime/prerender/static-paths.js';
 
 interface DefaultPrerendererOptions {
