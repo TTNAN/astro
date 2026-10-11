@@ -1,10 +1,10 @@
 import type { Rolldown } from 'vite';
 import { type CompileProps, type CompileResult, compile } from '../core/compile/index.js';
-import { getFileInfo } from '../vite-plugin-utils/index.js';
-import type { CompileMetadata } from '@astrojs/vite-plugin-astro/internal/vite-plugin-astro/types.js';
+import { type FileInfoConfig, getFileInfo } from '../vite-plugin-utils/index.js';
+import type { CompileMetadata } from './types.js';
 
 interface CompileAstroOption {
-	compileProps: CompileProps;
+	compileProps: CompileProps & { astroConfig: FileInfoConfig };
 	astroFileToCompileMetadata: Map<string, CompileMetadata>;
 }
 

@@ -12,7 +12,7 @@ import { runHookBuildSetup } from '../../integrations/hooks.js';
 import { SERIALIZED_MANIFEST_RESOLVED_ID } from '../../manifest/serialized.js';
 import { getPrerenderOutputDirectory, getServerOutputDirectory } from '../../prerender/utils.js';
 import type { RouteData } from '../../types/public/internal.js';
-import { PAGE_SCRIPT_ID } from '../../vite-plugin-scripts/index.js';
+import { PAGE_SCRIPT_ID } from '@astrojs/vite-plugin-astro/internal/vite-plugin-scripts/index.js';
 
 import { generatePages } from './generate.js';
 import { trackPageData } from './internal.js';
