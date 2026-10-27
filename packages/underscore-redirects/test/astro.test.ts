@@ -119,6 +119,59 @@ describe('Astro', () => {
 
 		assert.equal(redirects.definitions[0].status, 301);
 	});
+
+	it('Preserves every part of compound dynamic segments', () => {
+		const route = {
+			pattern: '/old-[id]/[category]-[slug]',
+			pathname: undefined,
+			segments: [
+				[
+					{ content: 'old-', dynamic: false, spread: false },
+					{ content: 'id', dynamic: true, spread: false },
+				],
+				[
+					{ content: 'category', dynamic: true, spread: false },
+					{ content: '-', dynamic: false, spread: false },
+					{ content: 'slug', dynamic: true, spread: false },
+				],
+			],
+			type: 'redirect',
+			redirect: '/post-[id]/[category]-[slug]',
+			redirectRoute: {
+				pattern: '/post-[id]/[category]-[slug]',
+				segments: [
+					[
+						{ content: 'post-', dynamic: false, spread: false },
+						{ content: 'id', dynamic: true, spread: false },
+					],
+					[
+						{ content: 'category', dynamic: true, spread: false },
+						{ content: '-', dynamic: false, spread: false },
+						{ content: 'slug', dynamic: true, spread: false },
+					],
+				],
+			},
+			entrypoint: '/old-[id]/[category]-[slug]',
+			isPrerendered: true,
+			origin: 'internal',
+		} as unknown as IntegrationResolvedRoute;
+
+		const redirects = createRedirectsFromAstroRoutes({
+			config: {
+				build: { format: 'directory' },
+				trailingSlash: 'never',
+			} as AstroConfig,
+			routeToDynamicTargetMap: new Map([[route, '']]),
+			dir: new URL(import.meta.url),
+			buildOutput: 'server',
+			assets: new Map([
+				['/old-[id]/[category]-[slug]', [new URL('./old/index.html', import.meta.url)]],
+			]),
+		});
+
+		assert.equal(redirects.definitions[0].input, '/old-:id/:category-:slug');
+		assert.equal(redirects.definitions[0].target, '/post-:id/:category-:slug/index.html');
+	});
 });
 
 function createIntegrationRoute(pattern: string, pathname = pattern): IntegrationResolvedRoute {
